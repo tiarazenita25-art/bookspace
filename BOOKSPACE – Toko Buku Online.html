@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BOOKSPACE – Toko Buku Online</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--navy:#14213d;--navy2:#1f3260;--bg:#fff;--cream:#f7f1e3;--ink:#1b2236;--mute:#5d667c;--line:#e4dfd0;--card:#fff;--accent:#c9973a;--red:#b3402e;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1426;--cream:#162040;--ink:#eef0f7;--mute:#a4adc6;--line:#2b3862;--card:#121a33;--navy:#0a1020;--navy2:#22356b;color-scheme:dark}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 15px/1.55 "Plus Jakarta Sans",system-ui,sans-serif}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;margin:0;line-height:1.15}
+button{font:inherit;cursor:pointer}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+header{background:var(--navy);color:#fff;position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+.bar{display:flex;align-items:center;gap:16px;padding:12px 0;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:9px;font:800 22px Fraunces,serif;letter-spacing:.5px}
+.nav{display:flex;gap:4px;flex-wrap:wrap}
+.nav a,.nav button{background:none;border:0;color:#fff;padding:7px 11px;border-radius:8px;opacity:.85}
+.nav a:hover,.nav button:hover,.nav .on{background:var(--navy2);opacity:1}
+.search{flex:1;min-width:200px;display:flex}
+.search input{flex:1;padding:9px 12px;border:0;border-radius:8px 0 0 8px;font:inherit;background:#fff;color:#14213d}
+.search button{border:0;background:var(--accent);color:#14213d;font-weight:700;padding:0 14px;border-radius:0 8px 8px 0}
+.act{display:flex;gap:8px;align-items:center}
+.btn{border:1px solid var(--navy);background:var(--navy);color:#fff;padding:9px 16px;border-radius:8px;font-weight:700}
+.btn.gold{background:var(--accent);border-color:var(--accent);color:#14213d}
+.btn.ghost{background:none;color:var(--ink);border-color:var(--line)}
+header .btn.ghost{color:#fff;border-color:#ffffff55}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.cartb{position:relative}
+.cartb b{position:absolute;top:-6px;right:-6px;background:var(--red);border-radius:99px;font-size:11px;min-width:18px;height:18px;display:grid;place-items:center}
+.hero{background:var(--cream);border-bottom:1px solid var(--line)}
+.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding-top:44px;padding-bottom:44px}
+.hero h1{font-size:clamp(30px,5vw,50px);color:var(--navy)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero h1{color:#fff}}
+.hero p{color:var(--mute);max-width:46ch;margin:14px 0 22px}
+.stack{display:flex;justify-content:center;gap:0}
+.stack .cover{width:112px;margin-left:-22px;box-shadow:0 8px 20px #0003}
+.stack .cover:nth-child(odd){transform:translateY(-14px)}
+section.s{padding:34px 0}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px;gap:10px}
+.sh h2{font-size:26px}
+.link{background:none;border:0;color:var(--navy2);font-weight:700;padding:0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .link{color:var(--accent)}}
+.cats{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:12px}
+.cat{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:16px;text-align:left;color:var(--ink);border-left:6px solid hsl(var(--h) 55% 38%)}
+.cat:hover{background:var(--cream)}
+.cat small{display:block;color:var(--mute)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(172px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px;display:flex;flex-direction:column;gap:6px}
+.card h3{font:700 14px/1.3 "Plus Jakarta Sans",sans-serif;cursor:pointer}
+.card .au{color:var(--mute);font-size:13px}
+.cover{aspect-ratio:2/3;border-radius:4px 8px 8px 4px;background:linear-gradient(160deg,hsl(var(--h) 55% 34%),hsl(var(--h) 60% 20%));color:#fff;padding:12% 10% 10% 16%;display:flex;flex-direction:column;justify-content:space-between;box-shadow:inset 6px 0 0 #00000030;cursor:pointer;overflow:hidden}
+.cover b{font:700 clamp(11px,1.5vw,15px)/1.2 Fraunces,serif}
+.cover i{font-size:10px;opacity:.8;font-style:normal}
+.pr{font-weight:700}
+.pr s{color:var(--mute);font-weight:400;font-size:13px;margin-left:4px}
+.tag{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:700;border-radius:5px;padding:1px 6px}
+.rt{font-size:12px;color:var(--mute)}
+.rt span{color:var(--accent)}
+.card .btn{margin-top:auto;padding:7px;font-size:13px}
+.promo{background:var(--navy);color:#fff;border-radius:16px;padding:30px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.promo h2{font-size:28px}
+.tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.tg blockquote{margin:0;background:var(--cream);border-radius:12px;padding:18px}
+.tg cite{display:block;margin-top:8px;color:var(--mute);font-style:normal;font-size:13px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+.tools select,.tools input{padding:9px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);font:inherit}
+.pg{display:flex;gap:6px;justify-content:center;margin:24px 0;flex-wrap:wrap}
+.pg button{min-width:36px}
+.det{display:grid;grid-template-columns:260px 1fr;gap:30px;padding:30px 0}
+.det .cover{cursor:default}
+.det h1{font-size:32px}
+.meta{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;color:var(--mute);margin:14px 0}
+.meta b{color:var(--ink);font-weight:500}
+.big{font-size:26px;font-weight:700}
+.row{display:grid;grid-template-columns:70px 1fr auto;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line)}
+.row .cover{padding:6px;cursor:default}
+.row .cover b{font-size:8px}
+.qty{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:8px}
+.qty button{border:0;background:none;width:30px;height:30px;color:var(--ink)}
+.sum{background:var(--cream);border-radius:12px;padding:18px;margin-top:18px;max-width:420px;margin-left:auto}
+.sum div{display:flex;justify-content:space-between;padding:3px 0}
+.note{background:var(--cream);border-left:4px solid var(--accent);padding:10px 14px;border-radius:6px;color:var(--mute);font-size:13px}
+footer{background:var(--navy);color:#cfd5e6;margin-top:30px;padding:36px 0 20px}
+footer .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px}
+footer h3{font:700 15px "Plus Jakarta Sans";color:#fff;margin-bottom:8px}
+footer p,footer li{font-size:13px;margin:4px 0}footer ul{padding:0;list-style:none;margin:0}
+.copy{text-align:center;font-size:12px;margin-top:22px;opacity:.7;width:100%;grid-column:1/-1}
+dialog{border:0;border-radius:14px;padding:24px;max-width:440px;width:92%;background:var(--bg);color:var(--ink)}
+dialog::backdrop{background:#0008}
+dialog input{width:100%;padding:9px;margin:5px 0 10px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--card);color:var(--ink)}
+.fm label{display:block;font-weight:500;margin-top:8px}.fm input,.fm select{width:100%;padding:9px;margin-top:3px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--card);color:var(--ink)}.fm .er{color:var(--red);font-size:13px;min-height:18px;margin:6px 0}.two{display:grid;grid-template-columns:1fr 1fr;gap:0 12px}.co{display:grid;grid-template-columns:1.3fr 1fr;gap:24px;align-items:start}@media(max-width:720px){.co,.two{grid-template-columns:1fr}}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--navy);color:#fff;padding:10px 18px;border-radius:99px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:9}
+#toast.on{opacity:1}
+@media(max-width:720px){.hero .wrap,.det{grid-template-columns:1fr}.det .cover{max-width:200px}.stack .cover{width:80px}.row{grid-template-columns:56px 1fr}.row>:last-child{grid-column:1/-1}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+<a href="#beranda" class="logo" aria-label="BOOKSPACE beranda"><svg width="34" height="34" viewBox="0 0 34 34"><rect x="2" y="2" width="30" height="30" rx="7" fill="#f7f1e3"/><path d="M8 9h7c1.4 0 2 .7 2 2v14c0-1-.7-1.6-2-1.6H8z M26 9h-7c-1.4 0-2 .7-2 2v14c0-1 .7-1.6 2-1.6h7z" fill="#14213d"/><circle cx="25" cy="8" r="2.5" fill="#c9973a"/></svg>BOOKSPACE</a>
+<nav class="nav" id="nav"><a href="#beranda" data-r="beranda">Home</a><a href="#katalog" data-r="katalog">Katalog</a><button id="catmenu">Kategori</button><a href="#tentang" data-r="tentang">Tentang Kami</a></nav>
+<form class="search" id="sf" role="search"><input id="q" placeholder="Cari judul atau penulis" aria-label="Cari judul atau penulis"><button>Cari</button></form>
+<div class="act"><a href="#keranjang" class="btn ghost cartb" aria-label="Keranjang">Keranjang<b id="cc">0</b></a><span id="au" class="act"></span></div>
+</div></header>
+<main id="app"></main>
+<footer><div class="wrap">
+<div><h3>BOOKSPACE</h3><p>Toko buku online untuk semua pembaca. Pilih, simpan ke keranjang, dan baca.</p></div>
+<div><h3>Belanja</h3><ul><li><a href="#katalog">Katalog</a></li><li><a href="#keranjang">Keranjang</a></li><li><a href="#tentang">Tentang kami</a></li></ul></div>
+<div><h3>Bantuan</h3><ul><li>Cara pemesanan</li><li>Pengiriman</li><li>Pembayaran</li></ul></div>
+<div><h3>Kontak</h3><p>halo@bookspace.example</p><p>Senin–Sabtu, 09.00–17.00</p></div>
+<p class="copy">© 2026 BOOKSPACE. Prototipe: judul, penulis, dan penerbit adalah data contoh.</p>
+</div></footer>
+<dialog id="dlg"></dialog><div id="toast" role="status"></div>
+<script>
+const CATS=[
+["Novel dan Fiksi",210,"Hujan di Kota Tua|Surat untuk Senja|Rumah di Ujung Dermaga|Pelabuhan Tanpa Nama|Lentera Malam Hari|Jejak di Tanah Basah|Kota yang Lupa Pagi|Peta Hati yang Hilang|Musim Terakhir Kemarau|Bisikan dari Loteng"],
+["Pendidikan",160,"Dasar-Dasar Metode Belajar|Matematika Asyik SMP|Panduan Menulis Karya Ilmiah|Bahasa Inggris Praktis|Fisika Konsep Dasar|Kimia dalam Kehidupan|Strategi Mengajar Kreatif|Statistik untuk Pemula|Biologi Sel Ringkas|Persiapan Ujian Efektif"],
+["Teknologi",200,"Pemrograman Web dari Nol|Dasar Python untuk Pemula|Basis Data Praktis|Jaringan Komputer Modern|Keamanan Siber Dasar|Pengantar Kecerdasan Buatan|Algoritma dan Logika|Desain Antarmuka Pengguna|Komputasi Awan Praktis|Analisis Data dengan Spreadsheet"],
+["Bisnis dan Ekonomi",35,"Memulai Usaha Kecil|Dasar Akuntansi UMKM|Strategi Pemasaran Digital|Investasi untuk Pemula|Manajemen Keuangan Pribadi|Seni Negosiasi Bisnis|Jualan Online Efektif|Kepemimpinan Tim Modern|Ekonomi Mikro Sederhana|Rencana Bisnis Praktis"],
+["Agama",150,"Kumpulan Doa Harian|Kisah Teladan Para Nabi|Tafsir Tematik Ringkas|Fikih Ibadah Sehari-hari|Akhlak Mulia dalam Keluarga|Sirah Nabawiyah Populer|Renungan Ramadan|Belajar Membaca Al-Qur’an|Hikmah dalam Kesabaran|Panduan Haji dan Umrah"],
+["Psikologi",280,"Memahami Emosi Diri|Psikologi Anak Usia Dini|Mengelola Kecemasan|Seni Berpikir Jernih|Psikologi Hubungan|Kecerdasan Emosional Praktis|Kebiasaan dan Otak|Psikologi Remaja|Mengenal Kepribadian|Tidur dan Kesehatan Mental"],
+["Sejarah",20,"Nusantara Sebelum Kolonial|Kerajaan-Kerajaan Pesisir|Perjalanan Menuju Kemerdekaan|Sejarah Perdagangan Rempah|Jalur Sutra dalam Cerita|Peradaban Lembah Sungai|Tokoh Pergerakan Nasional|Sejarah Dunia Ringkas|Kota-Kota Bersejarah|Revolusi Industri Pertama"],
+["Anak-anak",340,"Kancil dan Bulan Perak|Petualangan Si Kecil Budi|Dunia Warna-Warni|Belajar Angka Bersama Kiki|Kebun Ajaib Nenek|Si Kucing Penjelajah|Pelangi di Taman|Ayo Kenali Hewan|Dongeng Sebelum Tidur|Robot Kecil yang Baik Hati"],
+["Komik",0,"Pendekar Awan|Sekolah Para Penyihir Kecil|Detektif Cilik Rafi|Kapten Bintang|Dunia Kuliner Mimi|Ninja dari Desa Bambu|Klub Sains Ceria|Naga di Atap Sekolah|Petualang Kota Laut|Cerita Cinta Musim Semi"],
+["Pengembangan Diri",95,"Kebiasaan Kecil Besar Dampak|Fokus di Era Distraksi|Seni Mengatur Waktu|Percaya Diri Setiap Hari|Bangun Pagi dengan Tujuan|Menulis Jurnal Harian|Berani Memulai|Komunikasi yang Menyentuh|Hidup Sederhana Bahagia|Tujuan dan Langkah Nyata"]];
+const AU="Ayu Lestari,Bagas Pratama,Citra Wulandari,Dimas Anggara,Eka Safitri,Fajar Nugroho,Gita Maharani,Hendra Kusuma,Indah Permata,Joko Santoso,Kirana Putri,Lukman Hakim,Maya Sari,Nanda Firmansyah,Okta Ramadhani,Putri Handayani,Rizky Alamsyah,Sinta Dewi,Teguh Wibowo,Winda Oktavia".split(",");
+const PUB=["Penerbit Contoh Nusa","Penerbit Contoh Cakrawala","Penerbit Contoh Lintas","Penerbit Contoh Pustaka Baru","Penerbit Contoh Mentari"];
+const DISC=[0,10,15,0,20,25,0,30,10,0];
+const B=[];
+CATS.forEach((c,ci)=>c[2].split("|").forEach((t,k)=>{const i=B.length,id=i+1,p=Math.round((42000+((i*7919)%88)*1000)/500)*500,d=DISC[(i*3+ci)%10];
+B.push({id,t,a:AU[(i*7+ci)%20],pub:PUB[(i+ci)%5],c:ci,h:c[1],p,d,fp:Math.round(p*(100-d)/100/500)*500,
+r:(3.8+((i*13)%13)/10).toFixed(1),rv:12+(i*37)%260,st:(i*11)%9===0?0:5+(i*17)%60,sold:20+(i*53)%900,nw:(i*37)%100,
+desc:`${t} adalah buku contoh dalam kategori ${c[0]}. Deskripsi ini placeholder untuk prototipe BOOKSPACE; ganti dengan sinopsis resmi dari penerbit saat katalog sungguhan dimasukkan.`});}));
+const rp=n=>"Rp"+n.toLocaleString("id-ID");
+const $=s=>document.querySelector(s),app=$("#app");
+let cart=[];try{cart=JSON.parse(localStorage.getItem("bs_cart")||"[]")}catch(e){}
+const S={q:"",cat:-1,price:"all",sort:"rel",page:1};
+const save=()=>{try{localStorage.setItem("bs_cart",JSON.stringify(cart))}catch(e){}$("#cc").textContent=cart.reduce((s,x)=>s+x.n,0)};
+const toast=m=>{const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.k);toast.k=setTimeout(()=>t.classList.remove("on"),1800)};
+const stars=r=>`<span>★</span> ${r}`;
+function cover(b){return `<div class="cover" style="--h:${b.h}" data-open="${b.id}" role="link" tabindex="0" aria-label="Lihat ${b.t}"><b>${b.t}</b><i>${b.a}</i></div>`}
+function card(b){return `<article class="card">${cover(b)}<h3 data-open="${b.id}">${b.t}</h3><div class="au">${b.a}</div><div class="rt">${stars(b.r)} (${b.rv})</div>
+<div class="pr">${rp(b.fp)}${b.d?`<s>${rp(b.p)}</s> <span class="tag">-${b.d}%</span>`:""}</div>
+<button class="btn" data-add="${b.id}" ${b.st?"":"disabled"}>${b.st?"Tambah ke keranjang":"Stok habis"}</button></article>`}
+function add(id,n=1){const b=B[id-1],x=cart.find(c=>c.id==id),cur=x?x.n:0;if(cur+n>b.st){toast(`Stok ${b.t} tersisa ${b.st}`);return false}
+x?x.n+=n:cart.push({id,n});save();toast("Ditambahkan ke keranjang");return true}
+const pick=(f,n=5)=>B.slice().sort(f).slice(0,n);
+function home(){return `<section class="hero"><div class="wrap"><div><h1>Temukan buku berikutnya yang ingin Anda baca</h1><p>Seratus judul dari sepuluh kategori, dari novel sampai komik. Cari, bandingkan harga, lalu simpan ke keranjang.</p><button class="btn gold" data-go="katalog">Lihat katalog</button> <button class="btn ghost" data-go="diskon">Buku diskon</button></div>
+<div class="stack">${[3,43,13,63,83].map(i=>`<div class="cover" style="--h:${B[i].h}"><b>${B[i].t}</b><i>${B[i].a}</i></div>`).join("")}</div></div></section>
+<div class="wrap"><section class="s"><div class="sh"><h2>Kategori buku</h2></div><div class="cats">${CATS.map((c,i)=>`<button class="cat" style="--h:${c[1]}" data-cat="${i}">${c[0]}<small>10 buku</small></button>`).join("")}</div></section>
+${sec("Produk terlaris",pick((a,b)=>b.sold-a.sold))}${sec("Buku terbaru",pick((a,b)=>b.nw-a.nw))}
+<section class="s"><div class="promo"><div><h2>Diskon hingga 30%</h2><p style="margin:6px 0 0;opacity:.85">Pilihan buku dengan harga lebih ringan, selama stok tersedia.</p></div><button class="btn gold" data-go="diskon">Belanja diskon</button></div></section>
+${sec("Buku rekomendasi",pick((a,b)=>b.r-a.r||b.rv-a.rv))}${sec("Produk diskon",B.filter(b=>b.d>=25).slice(0,5),"diskon")}
+<section class="s"><div class="sh"><h2>Kata pelanggan</h2></div><div class="tg"><blockquote>Pencarian cepat dan harganya jelas. Saya langsung menemukan buku yang dicari.<cite>Contoh testimoni – Sari, Semarang</cite></blockquote><blockquote>Kategorinya rapi, jadi mudah memilih hadiah untuk keponakan.<cite>Contoh testimoni – Andi, Bandung</cite></blockquote><blockquote>Keranjangnya menghitung diskon otomatis. Tidak perlu hitung sendiri.<cite>Contoh testimoni – Rina, Surabaya</cite></blockquote></div></section></div>`}
+const sec=(t,l,go="katalog")=>`<section class="s"><div class="sh"><h2>${t}</h2><button class="link" data-go="${go}">Lihat semua</button></div><div class="grid">${l.map(card).join("")}</div></section>`;
+function catalog(){let l=B.filter(b=>(S.cat<0||b.c==S.cat)&&(!S.q||(b.t+" "+b.a).toLowerCase().includes(S.q.toLowerCase())));
+if(S.price=="d")l=l.filter(b=>b.d>0);else if(S.price!="all"){const[a,z]=S.price.split("-").map(Number);l=l.filter(b=>b.fp>=a&&b.fp<z)}
+if(S.sort=="lo")l.sort((a,b)=>a.fp-b.fp);if(S.sort=="hi")l.sort((a,b)=>b.fp-a.fp);if(S.sort=="nw")l.sort((a,b)=>b.nw-a.nw);
+const per=12,pages=Math.max(1,Math.ceil(l.length/per));S.page=Math.min(S.page,pages);const v=l.slice((S.page-1)*per,S.page*per);
+const o=(val,txt,cur)=>`<option value="${val}" ${val==cur?"selected":""}>${txt}</option>`;
+return `<div class="wrap"><section class="s"><div class="sh"><h2>${S.cat<0?"Katalog buku":CATS[S.cat][0]}</h2><span class="rt">${l.length} buku</span></div>
+<div class="tools"><select id="fc" aria-label="Kategori">${o(-1,"Semua kategori",S.cat)}${CATS.map((c,i)=>o(i,c[0],S.cat)).join("")}</select>
+<select id="fp" aria-label="Harga">${o("all","Semua harga",S.price)}${o("0-60000","Di bawah Rp60.000",S.price)}${o("60000-100000","Rp60.000–100.000",S.price)}${o("100000-999999","Di atas Rp100.000",S.price)}${o("d","Hanya diskon",S.price)}</select>
+<select id="fs" aria-label="Urutkan">${o("rel","Urutkan: relevan",S.sort)}${o("lo","Harga termurah",S.sort)}${o("hi","Harga termahal",S.sort)}${o("nw","Terbaru",S.sort)}</select>
+${S.q?`<button class="btn ghost" data-clear>Hapus pencarian “${S.q}”</button>`:""}</div>
+${v.length?`<div class="grid">${v.map(card).join("")}</div>`:`<p>Tidak ada buku yang cocok. Coba kata kunci lain atau ubah filter.</p>`}
+<div class="pg">${Array.from({length:pages},(_,i)=>`<button class="btn ${i+1==S.page?"":"ghost"}" data-pg="${i+1}">${i+1}</button>`).join("")}</div></section></div>`}
+function detail(id){const b=B[id-1];if(!b)return catalog();
+return `<div class="wrap"><div class="det"><div>${cover(b).replace("data-open","data-x")}</div><div><span class="rt">${CATS[b.c][0]}</span><h1>${b.t}</h1><p class="au" style="color:var(--mute)">oleh ${b.a}</p>
+<div class="rt">${stars(b.r)} · ${b.rv} ulasan contoh</div>
+<div class="big">${rp(b.fp)} ${b.d?`<s style="font-size:16px;color:var(--mute);font-weight:400">${rp(b.p)}</s> <span class="tag">-${b.d}%</span>`:""}</div>
+<div class="meta"><span>Penerbit</span><b>${b.pub}</b><span>Stok</span><b>${b.st?b.st+" tersedia":"Habis"}</b><span>Terjual</span><b>${b.sold} buku</b><span>ISBN</span><b>Belum diverifikasi</b></div>
+<p style="max-width:62ch">${b.desc}</p>
+<button class="btn" data-add="${b.id}" ${b.st?"":"disabled"}>Tambah ke keranjang</button> <button class="btn gold" data-buy="${b.id}" ${b.st?"":"disabled"}>Beli sekarang</button></div></div>
+<section class="s"><div class="sh"><h2>Buku serupa</h2></div><div class="grid">${B.filter(x=>x.c==b.c&&x.id!=b.id).slice(0,5).map(card).join("")}</div></section></div>`}
+function cartView(){if(!cart.length)return `<div class="wrap"><section class="s"><h2>Keranjang</h2><p>Keranjang masih kosong. <button class="link" data-go="katalog">Jelajahi katalog</button></p></section></div>`;
+let sub=0,tot=0;const rows=cart.map(x=>{const b=B[x.id-1];sub+=b.p*x.n;tot+=b.fp*x.n;return `<div class="row">${cover(b).replace("data-open","data-x")}<div><b>${b.t}</b><div class="au" style="color:var(--mute)">${b.a} · ${rp(b.fp)}</div><div class="rt">Stok ${b.st}</div></div>
+<div><span class="qty"><button data-q="${b.id}:-1" aria-label="Kurangi">−</button><span style="min-width:24px;text-align:center">${x.n}</span><button data-q="${b.id}:1" aria-label="Tambah">+</button></span> <button class="link" data-rm="${b.id}">Hapus</button><div class="pr" style="text-align:right">${rp(b.fp*x.n)}</div></div></div>`}).join("");
+return `<div class="wrap"><section class="s"><h2 style="margin-bottom:10px">Keranjang</h2>${rows}<div class="sum"><div><span>Subtotal</span><span>${rp(sub)}</span></div><div><span>Diskon</span><span>−${rp(sub-tot)}</span></div><div><span>Ongkir</span><span>dihitung saat checkout</span></div><div class="big"><span>Total</span><span>${rp(tot)}</span></div><button class="btn gold" style="width:100%;margin-top:10px" data-checkout>Lanjut ke checkout</button></div>
+<p class="note" style="margin-top:14px">Keranjang tersimpan di peramban ini. Penyimpanan per akun menunggu Supabase (tahap 5–7).</p></section></div>`}
+const about=()=>`<div class="wrap"><section class="s"><h2>Tentang BOOKSPACE</h2><p style="max-width:62ch">BOOKSPACE adalah rancangan toko buku online dengan katalog sepuluh kategori. Tahap ini berisi etalase: beranda, katalog, detail buku, dan keranjang. Login, database, checkout, dan pembayaran Midtrans memerlukan server serta kredensial, sehingga dikerjakan di tahap berikutnya.</p><p class="note" style="max-width:62ch">Semua judul, penulis, penerbit, harga, ulasan, dan testimoni adalah data contoh. ISBN sengaja tidak diisi.</p></section></div>`;
+function route(){const h=location.hash.slice(1)||"beranda",m=h.match(/^buku-(\d+)$/);
+if(h=="diskon"){S.cat=-1;S.price="d";S.page=1;return location.hash="katalog"}
+app.innerHTML=m?detail(+m[1]):h=="katalog"?catalog():h=="keranjang"?cartView():h=="checkout"?checkoutView():h=="akun"?accView():h=="tentang"?about():home();
+document.querySelectorAll("#nav a").forEach(a=>a.classList.toggle("on",a.dataset.r==h));scrollTo(0,0)}
+const go=r=>{location.hash=r};
+function dlg(h){const d=$("#dlg");d.innerHTML=h+`<form method="dialog"><button class="btn ghost" style="margin-top:10px">Tutup</button></form>`;d.showModal()}
+document.addEventListener("click",e=>{const t=e.target.closest("[data-open],[data-add],[data-buy],[data-go],[data-cat],[data-pg],[data-q],[data-rm],[data-checkout],[data-auth],[data-clear],#catmenu");if(!t)return;const d=t.dataset;
+if(d.open)go("buku-"+d.open);else if(d.add){add(+d.add);if(location.hash=="#keranjang")route()}
+else if(d.buy){if(add(+d.buy))go("keranjang")}else if(d.go)go(d.go);
+else if(d.cat!==undefined){S.cat=+d.cat;S.price="all";S.page=1;S.q="";location.hash=="#katalog"?route():go("katalog")}
+else if(d.pg){S.page=+d.pg;route()}
+else if(d.q){const[i,n]=d.q.split(":").map(Number),x=cart.find(c=>c.id==i);if(n>0&&x.n+1>B[i-1].st)return toast("Stok tidak mencukupi");x.n+=n;if(x.n<1)cart=cart.filter(c=>c.id!=i);save();route()}
+else if(d.rm){cart=cart.filter(c=>c.id!=d.rm);save();route()}
+else if("clear" in d){S.q="";$("#q").value="";route()}
+else if("checkout" in d)go("checkout");
+else if(d.auth)authDlg(d.auth);
+else if(t.id=="catmenu"){dlg(`<h2>Kategori</h2><div class="cats">${CATS.map((c,i)=>`<button class="cat" style="--h:${c[1]}" data-cat="${i}" onclick="$('#dlg').close()">${c[0]}</button>`).join("")}</div>`)}});
+document.addEventListener("keydown",e=>{if(e.key=="Enter"&&e.target.dataset.open)go("buku-"+e.target.dataset.open)});
+document.addEventListener("change",e=>{const m={fc:"cat",fp:"price",fs:"sort"}[e.target.id];if(m){S[m]=m=="cat"?+e.target.value:e.target.value;S.page=1;route()}});
+$("#sf").addEventListener("submit",e=>{e.preventDefault();S.q=$("#q").value.trim();S.cat=-1;S.price="all";S.page=1;location.hash=="#katalog"?route():go("katalog")});
+let user=null,orders=[];try{user=JSON.parse(localStorage.getItem("bs_user")||"null");orders=JSON.parse(localStorage.getItem("bs_orders")||"[]")}catch(e){}
+const sv=()=>{try{localStorage.setItem("bs_user",JSON.stringify(user));localStorage.setItem("bs_orders",JSON.stringify(orders))}catch(e){}};
+function renderAuth(){$("#au").innerHTML=user?`<a class="btn ghost" href="#akun">${user.name.split(" ")[0]}</a><button class="btn gold" data-auth="Logout">Logout</button>`:`<button class="btn ghost" data-auth="Login">Login</button><button class="btn gold" data-auth="Register">Register</button>`}
+function authDlg(m){if(m=="Logout"){user=null;sv();renderAuth();if(location.hash=="#akun")go("beranda");return toast("Anda sudah keluar")}
+const reg=m=="Register",f=m=="Forgot";
+dlg(`<h2>${reg?"Buat akun":f?"Lupa password":"Masuk"}</h2><p class="note">Mode demo: nama dan email hanya disimpan di peramban ini, password tidak disimpan. Login sungguhan lewat Supabase aktif setelah paket integrasi dipasang.</p><form class="fm" id="af" novalidate>${reg?`<label>Nama lengkap<input name="name" autocomplete="name"></label>`:""}<label>Email<input name="email" type="email" autocomplete="email"></label>${f?"":`<label>Password<input name="pw" type="password" autocomplete="${reg?"new":"current"}-password"></label>`}<div class="er" id="ae"></div><button class="btn" style="width:100%">${reg?"Daftar":f?"Kirim tautan reset":"Masuk"}</button></form>${f?"":`<button class="btn ghost" style="width:100%;margin-top:8px" data-g>Lanjut dengan Google</button>`}<p style="font-size:13px">${reg?`<button class="link" data-auth="Login">Sudah punya akun? Masuk</button>`:f?`<button class="link" data-auth="Login">Kembali ke login</button>`:`<button class="link" data-auth="Register">Belum punya akun? Daftar</button> · <button class="link" data-auth="Forgot">Lupa password</button>`}</p>`)}
+const ship={reg:["Reguler (tarif contoh)",15000],exp:["Ekspres (tarif contoh)",30000]};
+function checkoutView(){if(!cart.length)return cartView();let sub=0,tot=0;const li=cart.map(x=>{const b=B[x.id-1];sub+=b.p*x.n;tot+=b.fp*x.n;return `<div><span>${b.t} ×${x.n}</span><span>${rp(b.fp*x.n)}</span></div>`}).join("");
+const fl=(n,l,t="text",v="")=>`<label>${l}<input name="${n}" type="${t}" value="${v}"></label>`;
+return `<div class="wrap"><section class="s"><h2 style="margin-bottom:14px">Checkout</h2><div class="co"><form class="fm" id="cf" novalidate><h3>Alamat pengiriman</h3>${fl("nama","Nama penerima","text",user?user.name:"")}<div class="two">${fl("tel","Nomor telepon","tel")}${fl("email","Email","email",user?user.email:"")}</div>${fl("alamat","Alamat lengkap")}<div class="two">${fl("prov","Provinsi")}${fl("kota","Kota")}${fl("kec","Kecamatan")}${fl("pos","Kode pos")}</div><label>Kurir<select name="kurir">${Object.entries(ship).map(([k,v])=>`<option value="${k}">${v[0]} – ${rp(v[1])}</option>`).join("")}</select></label><div class="er" id="ce"></div><button class="btn gold" style="width:100%">Buat pesanan (simulasi)</button></form><aside class="sum" style="margin:0;max-width:none"><h3 style="margin-bottom:8px">Ringkasan</h3>${li}<hr style="border:0;border-top:1px solid var(--line)"><div><span>Subtotal</span><span>${rp(sub)}</span></div><div><span>Diskon</span><span>−${rp(sub-tot)}</span></div><div><span>Ongkir</span><span id="sp">${rp(15000)}</span></div><div class="big"><span>Total</span><span id="tt" data-t="${tot}">${rp(tot+15000)}</span></div></aside></div><p class="note" style="margin-top:14px">Pembayaran Midtrans belum terhubung. Tombol di atas hanya mencatat pesanan simulasi di peramban ini; tidak ada uang yang diproses.</p></section></div>`}
+function accView(){if(!user)return `<div class="wrap"><section class="s"><h2>Akun saya</h2><p>Masuk untuk melihat profil dan riwayat pesanan.</p><button class="btn" data-auth="Login">Masuk</button></section></div>`;
+return `<div class="wrap"><section class="s"><h2>Akun saya</h2><p>${user.name} · ${user.email}</p><h3 style="margin:18px 0 8px">Riwayat pesanan</h3>${orders.length?orders.map(o=>`<div class="card" style="margin-bottom:10px"><div><b>${o.no}</b> <span class="rt">${o.date}</span></div>${o.items.map(i=>`<div>${i.t} ×${i.n}</div>`).join("")}<div class="rt">Kirim ke: ${o.to}</div><div class="rt">Kurir: ${o.kurir} · Pembayaran: belum dibayar (simulasi) · Pengiriman: belum dikirim</div><div class="pr">Total ${rp(o.total)}</div></div>`).join(""):`<p>Belum ada pesanan.</p>`}</section></div>`}
+document.addEventListener("click",e=>{if(e.target.closest("[data-g]"))toast("Google OAuth butuh Supabase dan Google Cloud; belum aktif di demo")});
+document.addEventListener("change",e=>{if(e.target.name=="kurir"){const s=ship[e.target.value][1];$("#sp").textContent=rp(s);$("#tt").textContent=rp(+$("#tt").dataset.t+s)}});
+document.addEventListener("submit",e=>{const f=e.target;
+if(f.id=="af"){e.preventDefault();const v=Object.fromEntries(new FormData(f)),er=$("#ae");
+if("name" in v&&v.name.trim().length<2)return er.textContent="Isi nama lengkap.";
+if(!/^\S+@\S+\.\S+$/.test(v.email||""))return er.textContent="Format email belum benar.";
+if("pw" in v&&v.pw.length<8)return er.textContent="Password minimal 8 karakter.";
+if(!("pw" in v)){$("#dlg").close();return toast("Demo: tautan reset dikirim Supabase setelah terhubung")}
+user={name:v.name||v.email.split("@")[0],email:v.email};sv();renderAuth();$("#dlg").close();toast("Berhasil masuk (mode demo)")}
+if(f.id=="cf"){e.preventDefault();const v=Object.fromEntries(new FormData(f)),er=$("#ce"),T=k=>(v[k]||"").trim();
+const bad=!user?"Masuk dulu agar pesanan masuk ke riwayat akun.":T("nama").length<2?"Isi nama penerima.":!/^(\+62|62|0)8\d{7,12}$/.test(T("tel").replace(/[\s-]/g,""))?"Nomor telepon belum benar (contoh 08123456789).":!/^\S+@\S+\.\S+$/.test(T("email"))?"Format email belum benar.":T("alamat").length<8?"Alamat lengkap minimal 8 karakter.":!T("prov")||!T("kota")||!T("kec")?"Lengkapi provinsi, kota, dan kecamatan.":!/^\d{5}$/.test(T("pos"))?"Kode pos harus 5 angka.":cart.find(x=>x.n>B[x.id-1].st)?"Ada buku yang stoknya tidak cukup. Periksa keranjang.":"";
+if(bad){er.textContent=bad;if(!user)authDlg("Login");return}
+let tot=0;const items=cart.map(x=>{const b=B[x.id-1];tot+=b.fp*x.n;return{id:x.id,t:b.t,n:x.n,p:b.fp}});
+orders.unshift({no:"BS-"+Date.now().toString(36).toUpperCase(),date:new Date().toLocaleDateString("id-ID"),items,total:tot+ship[v.kurir][1],kurir:ship[v.kurir][0],to:`${T("nama")}, ${T("alamat")}, ${T("kec")}, ${T("kota")}, ${T("prov")} ${T("pos")}`});
+cart=[];save();sv();go("akun");toast("Pesanan simulasi tercatat")}});
+addEventListener("hashchange",route);renderAuth();save();route();
+</script>
+</body>
+</html>
